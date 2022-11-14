@@ -10,3 +10,7 @@ def welcome(request):
 
 def date(request):
     return HttpResponse('this page was served at '+ str(datetime.now()))
+
+def detailGrandeur(request,id):
+    grandeur=Grandeur.objects.get(pk=id)
+    return render(request,"website/grandeur/grandeur_detail.html",{"grandeur":grandeur})
