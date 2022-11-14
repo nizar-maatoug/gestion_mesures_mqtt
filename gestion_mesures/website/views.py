@@ -14,3 +14,7 @@ def date(request):
 def detailGrandeur(request,id):
     grandeur=get_object_or_404(Grandeur,pk=id)
     return render(request,"website/grandeur/grandeur_detail.html",{"grandeur":grandeur})
+
+def listGrandeur(request):
+    grandeurs=Grandeur.objects.all()
+    return render(request,"website/grandeur/grandeur_list.html",{"grandeurs":grandeurs})

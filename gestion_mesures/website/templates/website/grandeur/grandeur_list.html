@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grandeur List</title>
+</head>
+<body>
+    <h2>Grandeurs</h2>
+    <ul>
+        {%for grandeur in grandeurs%}
+            <li>
+                <a href="grandeurs/{{grandeur.id}}">{{grandeur.nom}}</a>
+            </li>
+        {%endfor%}
+    </ul>
+
+
+</body>
+</html>
