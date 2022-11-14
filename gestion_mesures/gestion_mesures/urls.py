@@ -8,6 +8,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',welcome),
     path('date',date),
-    path('grandeurs/<int:id>',detailGrandeur),
+    path('grandeurs/<int:id>',detailGrandeur,name="detailGrandeur"),
     path('grandeurs',listGrandeur)
 ]
