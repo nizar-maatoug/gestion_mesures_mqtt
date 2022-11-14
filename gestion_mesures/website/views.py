@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 
 from website.models import Grandeur,Mesure
 
@@ -12,5 +12,5 @@ def date(request):
     return HttpResponse('this page was served at '+ str(datetime.now()))
 
 def detailGrandeur(request,id):
-    grandeur=Grandeur.objects.get(pk=id)
+    grandeur=get_object_or_404(Grandeur,pk=id)
     return render(request,"website/grandeur/grandeur_detail.html",{"grandeur":grandeur})
