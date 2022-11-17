@@ -23,6 +23,13 @@ def listGrandeur(request):
 #Generer une classe GrandeurForm
 GrandeurForm=modelform_factory(Grandeur,exclude=[])
 def newGrandeur(request):
-    #instancier la classe GrandeurForm
-    formGrandeur=GrandeurForm()
+    if request.method=="POST":
+        #form has been submited => process data
+        form=GrandeurForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("grandeurs")
+    else:
+        #instancier la classe GrandeurForm
+        formGrandeur=GrandeurForm()
     return render(request, "website/grandeur/new.html",{"form":formGrandeur})
