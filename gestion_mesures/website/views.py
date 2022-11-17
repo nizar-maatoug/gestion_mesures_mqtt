@@ -5,6 +5,8 @@ from django.forms import modelform_factory
 
 from website.models import Grandeur,Mesure
 
+from website.forms import MesureForm
+
 # Create your views here.
 def welcome(request):
     return render(request,"website/welcome.html",{"num_grandeurs":Grandeur.objects.count()})
@@ -40,17 +42,19 @@ def detailMesure(request,id):
 
 def listMesure(request,grandeur_id):
     mesures=Mesure.objects.filter(grandeur_id=grandeur_id)
-    return render(request,"website/grandeur/grandeur_list.html",{"mesures":mesures})
+    print(mesures)
+    return render(request,"website/mesure/list.html",{"mesures":mesures})
 
 #Generer une classe MesureForm
-MesureForm=modelform_factory(Mesure,exclude=[])
+#MesureForm=modelform_factory(Mesure,exclude=[])
+
 def newMesure(request):
     if request.method=="POST":
         #form has been submited => process data
         formMesure=MesureForm(request.POST)
         if formMesure.is_valid():
-            formMesure.save()
-            return redirect("mesures",formMesure.instance.get('grandeur_id'))
+            mesure=formMesure.save()
+            return redirect("grandeurs")
     else:
         #instancier la classe MesureForm
         formMesure=MesureForm()
