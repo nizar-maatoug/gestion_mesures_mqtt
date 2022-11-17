@@ -1,0 +1,14 @@
+{%extends "base.html"%}
+{%block title%}liste des mesures{%endblock%}
+{%block content%}
+    <h2>Mesures</h2>
+    <ul>
+        {%for mesure in mesures%}
+            <li>
+                <a href="{% url 'detailMesure' mesure.id %}">{{mesure.valeur}}</a>
+            </li>
+        {%endfor%}
+    </ul>
+
+
+{%endblock%}

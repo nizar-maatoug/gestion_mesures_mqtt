@@ -1,0 +1,9 @@
+{%extends "base.html"%}
+{%block title%}Details mesure {{mesure.id}}{%endblock%}
+{%block content%}
+
+
+    <h1>Details {{mesure.valeur}}</h1>
+    <p>{{grandeur.datePrise}} </p>
+    <p>{{grandeur.grandeur.nom}}</p>
+{%endblock%}

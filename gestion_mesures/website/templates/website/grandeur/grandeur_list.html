@@ -5,7 +5,7 @@
     <ul>
         {%for grandeur in grandeurs%}
             <li>
-                <a href="{% url 'detailGrandeur' grandeur.id %}">{{grandeur.nom}}</a>
+                <a href="{% url 'mesures' grandeur.id %}">{{grandeur.nom}}</a>
             </li>
         {%endfor%}
     </ul>

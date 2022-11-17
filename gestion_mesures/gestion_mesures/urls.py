@@ -8,5 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',welcome),
     path('date',date),
-    path('grandeurs',include('website.urls')),
+    path('',include('website.urls')),
 ]

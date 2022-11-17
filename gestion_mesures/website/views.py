@@ -33,3 +33,25 @@ def newGrandeur(request):
         #instancier la classe GrandeurForm
         formGrandeur=GrandeurForm()
     return render(request, "website/grandeur/new.html",{"form":formGrandeur})
+
+def detailMesure(request,id):
+    mesure=get_object_or_404(Mesure,pk=id)
+    return render(request,"website/mesure/detail.html",{"mesure":mesure})
+
+def listMesure(request,grandeur_id):
+    mesures=Mesure.objects.filter(grandeur_id=grandeur_id)
+    return render(request,"website/grandeur/grandeur_list.html",{"mesures":mesures})
+
+#Generer une classe MesureForm
+MesureForm=modelform_factory(Mesure,exclude=[])
+def newMesure(request):
+    if request.method=="POST":
+        #form has been submited => process data
+        formMesure=MesureForm(request.POST)
+        if formMesure.is_valid():
+            formMesure.save()
+            return redirect("mesures",formMesure.instance.get('grandeur_id'))
+    else:
+        #instancier la classe MesureForm
+        formMesure=MesureForm()
+    return render(request, "website/mesure/new.html",{"form":formMesure})
