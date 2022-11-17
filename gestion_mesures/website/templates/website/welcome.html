@@ -1,16 +1,9 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome!</title>
-    <link rel="stylesheet" href="{% static 'website/style.css' %}">
-</head>
-<body>
+{%extends "base.html"%}
+{%block title%}Welcome{%endblock%}
+{%block content%}
+{%load static%}
     <img src="{% static 'website/django-logo.png' %}" width="100px">
     <h1>Welcome to mesures App</h1>
     <p>Demo application for mesure</p>
     <p>there are currently {{num_grandeurs}} grandeurs in the database</p>
-
-</body>
-</html>
+{%endblock%}

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Grandeur List</title>
-</head>
-<body>
+{%extends "base.html"%}
+{%block title%}liste des grandeurs{%endblock%}
+{%block content%}
     <h2>Grandeurs</h2>
     <ul>
         {%for grandeur in grandeurs%}
@@ -15,5 +11,4 @@
     </ul>
 
 
-</body>
-</html>
+{%endblock%}
