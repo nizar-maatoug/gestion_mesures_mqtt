@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from datetime import datetime
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
 from django.forms import modelform_factory
 
 from website.models import Grandeur,Mesure
