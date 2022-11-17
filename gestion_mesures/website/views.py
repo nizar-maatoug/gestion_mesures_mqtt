@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from datetime import datetime
 from django.shortcuts import render,get_object_or_404
+from django.forms import modelform_factory
 
 from website.models import Grandeur,Mesure
 
@@ -18,3 +19,10 @@ def detailGrandeur(request,id):
 def listGrandeur(request):
     grandeurs=Grandeur.objects.all()
     return render(request,"website/grandeur/grandeur_list.html",{"grandeurs":grandeurs})
+
+#Generer une classe GrandeurForm
+GrandeurForm=modelform_factory(Grandeur,exclude=[])
+def newGrandeur(request):
+    #instancier la classe GrandeurForm
+    formGrandeur=GrandeurForm()
+    return render(request, "website/grandeur/new.html",{"form":formGrandeur})
