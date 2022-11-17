@@ -1,9 +1,11 @@
 {%extends "base.html"%}
 {%block title%}Nouvelle Grandeur{%endblock%}
 {%block content%}
-    <form>
+    <form method="post">
       <table>
         {{form}}
       </table>
+        {%csrf_token%}
+        <button type="submit">Ajouter</button>
     </form>
 {%endblock%}
