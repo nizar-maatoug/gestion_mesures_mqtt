@@ -20,5 +20,27 @@ def add_list_grandeur(request):
             return Response(serializer.data,status=status.HTTP_201_CREATED)
         return Response(serializer.data,status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET','PUT','DELETE'])
+def get_modif_delete_grandeur(request,pk):
+    #récupérer la grandeur
+    try:
+        grandeur=Grandeur.objects.get(pk=pk)
+    except Grandeur.DoesNotExists:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method=='GET':
+        serializer=GrandeurSerializer(grandeur)
+        return Response(serializer.data)
+    elif request.method=='PUT':
+        serializer=GrandeurSerializer(grandeur, request.data)
+        if(serializer.is_valid()):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+    if request.method == 'DELETE':
+        grandeur.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
 
 
