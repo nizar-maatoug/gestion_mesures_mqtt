@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de bord</title>
+</head>
+<body>
+    <h2>Dashboard</h2>
+    <textarea id="dashboard_log" cols="60" rows="10"></textarea><br>
+    <script>
+        const dashboardSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/sensor/temperature'
+        );
+        dashboardSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#dashboard_log').value += (data.message + '\n');
+        };
+        dashboardSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+    </script>
+
+</body>
+</html>

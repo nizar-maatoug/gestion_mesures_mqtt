@@ -9,6 +9,6 @@ urlpatterns = [
     path('',welcome),
     path('date',date),
     path('',include('website.urls')),
-
     path('api/',include('webapi.urls')),
+    path('dashboard/',include('dashboardapp.urls')),
 ]
